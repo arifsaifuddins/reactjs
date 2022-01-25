@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 // import Card from "../../components/card/Card";
-import Counter from "../counter/Counter";
+// import Counter from "../counter/Counter";
+import LifeCycleComp from "../lifecylce/LifeCycleComp";
 import "./Home.css";
 
 class Home extends Component {
+  state = {
+    showComponent: true
+  }
+
+  componentDidMount() {
+    // setTimeout(() => {
+    //   this.setState({
+    //     showComponent: false
+    //   })
+    // }, 15000);
+  }
+
   render() {
     return (
       <div className="body">
@@ -27,7 +40,8 @@ class Home extends Component {
           job="FrontEnd Dev"
           skill="JS"
         /> */}
-        <Counter />
+        {/* <Counter /> */}
+        {this.state.showComponent ? <LifeCycleComp /> : null}
       </div>
     )
   }

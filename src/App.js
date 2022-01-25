@@ -1,5 +1,5 @@
 import Card from './components/card/Card';
-import React, { Fragment } from 'react';
+import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -21,14 +21,14 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Fragment>
+    <div className='App'>
       <Card
         nama="Arief Saifuddien"
         job="UI/UX Designer"
         skill="Figma"
       />
       <h1>{new Date().toLocaleDateString()}</h1>
-    </Fragment>
+    </div>
   );
 }
 export default App;
