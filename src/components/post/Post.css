@@ -1,0 +1,33 @@
+.post {
+  width: 350px;
+  background-image: linear-gradient(#ffa899, #aaf334);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.gambar {
+  width: 100%;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.desc {
+  text-align: left;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.text {
+  font-size: 15px;
+}
+
+.remove {
+  padding: 10px;
+  background-color: red;
+  border-radius: 10px;
+  color: #fff;
+}

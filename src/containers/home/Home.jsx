@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 // import Card from "../../components/card/Card";
 // import Counter from "../counter/Counter";
-import LifeCycleComp from "../lifecylce/LifeCycleComp";
+// import LifeCycleComp from "../lifecylce/LifeCycleComp";
+import BlogPost from "../blog/BlogPost";
 import "./Home.css";
 
 class Home extends Component {
-  state = {
-    showComponent: true
-  }
+  // state = {
+  //   showComponent: true
+  // }
 
-  componentDidMount() {
-    // setTimeout(() => {
-    //   this.setState({
-    //     showComponent: false
-    //   })
-    // }, 15000);
-  }
+  // componentDidMount() {
+  //   // setTimeout(() => {
+  //   //   this.setState({
+  //   //     showComponent: false
+  //   //   })
+  //   // }, 15000);
+  // }
 
   render() {
     return (
@@ -41,7 +42,8 @@ class Home extends Component {
           skill="JS"
         /> */}
         {/* <Counter /> */}
-        {this.state.showComponent ? <LifeCycleComp /> : null}
+        {/* {this.state.showComponent ? <LifeCycleComp /> : null} */}
+        <BlogPost />
       </div>
     )
   }
