@@ -1,6 +1,7 @@
+import Card from './components/card/Card';
+import React, { Fragment } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Card from './components/card/Card';
 
 function App() {
   return (
@@ -20,12 +21,14 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Card
-      nama="Arief Saifuddien"
-      job="UI/UX Designer"
-      skill="Figma"
-    />
+    <Fragment>
+      <Card
+        nama="Arief Saifuddien"
+        job="UI/UX Designer"
+        skill="Figma"
+      />
+      <h1>{new Date().toLocaleDateString()}</h1>
+    </Fragment>
   );
 }
-
 export default App;
