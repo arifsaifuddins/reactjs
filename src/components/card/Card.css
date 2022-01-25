@@ -1,0 +1,23 @@
+img {
+  width: 160px;
+}
+
+.card {
+  width: 450px;
+  padding: 20px;
+  background-image: linear-gradient(#faa, #aaf);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin: 30px auto;
+  box-shadow: 0 0 10px #aaa;
+}
+
+.desc {
+  margin-left: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  font-size: 25px;
+}
