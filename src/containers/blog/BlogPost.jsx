@@ -22,6 +22,7 @@ class BlogPost extends Component {
     axios.delete(`http://localhost:3004/posts/${id}`)
       .then(res => {
         this.dataAPI();
+        console.log(res);
       })
   }
 
