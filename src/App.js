@@ -1,4 +1,4 @@
-import Card from './components/card/Card';
+// import Card from './components/card/Card';
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
@@ -22,11 +22,11 @@ function App() {
     //   </header>
     // </div>
     <div className='App'>
-      <Card
+      {/* <Card
         nama="Arief Saifuddien"
         job="UI/UX Designer"
         skill="Figma"
-      />
+      /> */}
       <h1>{new Date().toLocaleDateString()}</h1>
     </div>
   );
