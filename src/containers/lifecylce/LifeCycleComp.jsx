@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import './LifeCycleComp.css'
 
-class LifeCycleComp extends Component {
+class LifeCycleComp extends React.Component {
   // lifecycle 1
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ class LifeCycleComp extends Component {
   // kalo ada update nilai maka ke method ini
   shouldComponentUpdate(nextProps, nextState) {
     console.group('shouldComponentUpdate')
-    // console.log('next props : ', nextProps);
+    console.log('next props : ', nextProps);
     console.log('next state : ', nextState);
     console.log('now state : ', this.state);
     console.groupEnd();
