@@ -31,13 +31,11 @@ class Button extends Component {
 
   render() {
     return (
-
       <div className="button">
         <button onClick={this.handleMin}>-</button>
         <div className="count">{this.state.count}</div>
         <button onClick={this.handlePlus}>+</button>
       </div>
-
     )
   }
 }
