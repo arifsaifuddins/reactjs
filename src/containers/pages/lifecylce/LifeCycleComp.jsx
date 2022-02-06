@@ -63,7 +63,12 @@ class LifeCycleComp extends React.Component {
 
   render() {
     console.log('render')
-    return <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
+    return (
+      <>
+        <h1 className="header">LifeCycle</h1><hr />
+        <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
+      </>
+    )
   }
 }
 

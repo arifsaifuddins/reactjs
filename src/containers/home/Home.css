@@ -1,5 +1,25 @@
 .body {
   text-align: center;
   width: max-content;
-  margin: 0 auto;
+  margin: 80px auto;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #221dfa;
+}
+
+.link {
+  background-color: #faf;
+  padding: 5px;
+  text-decoration: none;
+  color: #221dfa;
+  border-radius: 5px;
 }

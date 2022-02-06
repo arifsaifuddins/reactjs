@@ -1,8 +1,11 @@
-import React, { Component } from "react";
-// import Card from "../../components/card/Card";
-// import Counter from "../counter/Counter";
-// import LifeCycleComp from "../lifecylce/LifeCycleComp";
-import BlogPost from "../blog/BlogPost";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import Counter from "../pages/counter/Counter";
+import LifeCycleComp from "../pages/lifecylce/LifeCycleComp";
+import BlogPost from "../pages/blog/BlogPost";
+import Cards from "../pages/card/Cards";
+
 import "./Home.css";
 
 class Home extends Component {
@@ -43,7 +46,26 @@ class Home extends Component {
         /> */}
         {/* <Counter /> */}
         {/* {this.state.showComponent ? <LifeCycleComp /> : null} */}
-        <BlogPost />
+        {/* <BlogPost /> */}
+
+        {/* react-router */}
+        <BrowserRouter>
+          <Fragment>
+            <div className="navbar">
+              <Link className="link" to="/">Blog</Link>
+              <Link className="link" to="/counter">Counter</Link>
+              <Link className="link" to="/lifecycle">LifeCycle</Link>
+              <Link className="link" to="/cards">Cards</Link>
+            </div>
+
+            <Routes>
+              <Route exact path="/" element={<BlogPost />} />
+              <Route path="/counter" element={<Counter />} />
+              <Route path="/lifecycle" element={<LifeCycleComp />} />
+              <Route path="/cards" element={<Cards />} />
+            </Routes>
+          </Fragment>
+        </BrowserRouter>
       </div>
     )
   }

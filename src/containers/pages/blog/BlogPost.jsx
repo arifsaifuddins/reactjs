@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Post from "../../components/post/Post";
+import Post from "../../../components/post/Post";
 import axios from 'axios';
 import './BlogPost.css';
 
