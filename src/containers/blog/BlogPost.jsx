@@ -11,7 +11,8 @@ class BlogPost extends Component {
       id: 1,
       title: '',
       body: ''
-    }
+    },
+    isUpdate: false
   }
 
   getDataAPI = () => {
@@ -33,12 +34,19 @@ class BlogPost extends Component {
       })
   }
 
-  removeData = (id) => {
+  deleteDataAPI = (id) => {
     axios.delete(`http://localhost:3004/posts/${id}`)
       .then(res => {
         this.getDataAPI();
         console.log(res);
       })
+  }
+
+  updateDataAPI = () => {
+    axios.put(`http://localhost:3004/posts/${this.state.formBlog.id}`, this.state.formBlog).then(res => {
+      console.log(res)
+      this.getDataAPI()
+    })
   }
 
   componentDidMount() {
@@ -55,18 +63,50 @@ class BlogPost extends Component {
     this.getDataAPI();
   }
 
+  updateForm = (data) => {
+    console.log(data)
+    this.setState({
+      formBlog: data,
+      isUpdate: true
+    })
+  }
+
   changeForm = (event) => {
     console.log(event.target.name)
     let newFormValue = { ...this.state.formBlog }
-    newFormValue['id'] = new Date().getTime();
+    if (!this.state.isUpdate) {
+      newFormValue['id'] = new Date().getTime();
+    }
     newFormValue[event.target.name] = event.target.value;
     this.setState({
       formBlog: newFormValue
     })
   }
 
-  submitFormPost = () => {
-    this.postDataAPI();
+  submitForm = () => {
+    if (this.state.isUpdate) {
+      this.updateDataAPI();
+      this.setState({
+        formBlog: {
+          userId: 1,
+          id: '',
+          title: '',
+          body: ''
+        },
+        isUpdate: false
+      })
+    } else {
+      this.postDataAPI();
+      this.setState({
+        formBlog: {
+          userId: 1,
+          id: '',
+          title: '',
+          body: ''
+        },
+      })
+    }
+
   }
 
   render() {
@@ -74,17 +114,17 @@ class BlogPost extends Component {
       <Fragment>
         <h1 className="header">Blog Post</h1><hr />
         <div className="form">
-          <h2>add a post</h2>
+          <h2> post</h2>
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" id="title" onChange={this.changeForm} />
+          <input type="text" name="title" id="title" onChange={this.changeForm} value={this.state.formBlog.title} />
           <label htmlFor="body">body</label>
-          <textarea name="body" id="body" rows="10" onChange={this.changeForm}></textarea><br />
-          <button type="submit" onClick={this.submitFormPost}>save</button>
+          <textarea name="body" id="body" rows="10" onChange={this.changeForm} value={this.state.formBlog.body}></textarea><br />
+          <button type="submit" onClick={this.submitForm}>save</button>
         </div>
         <div className="grid">
           {
             this.state.data.map(post => {
-              return <Post data={post} key={post.id} remove={this.removeData} />
+              return <Post data={post} key={post.id} remove={this.deleteDataAPI} update={this.updateForm} />
             })
           }
         </div>
