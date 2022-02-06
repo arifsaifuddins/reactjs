@@ -1,5 +1,11 @@
 .grid {
   display: grid;
   grid-template-columns: auto auto;
+}
 
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px auto;
 }
