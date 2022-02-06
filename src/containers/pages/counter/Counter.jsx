@@ -20,7 +20,7 @@ class Counter extends Component {
         <div className="counter">
           <h1 className="numb">{this.state.count}</h1>
           {/* dapat value dari button.js */}
-          <Button className="btn" changeValue={(value) => this.handleControl(value)} />
+          <Button className="button" changeValue={(value) => this.handleControl(value)} />
         </div>
       </>
     )
