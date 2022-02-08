@@ -2,10 +2,12 @@ import React, { Component, Fragment } from "react";
 import Post from "../../../components/post/Post";
 import axios from 'axios';
 import './BlogPost.css';
+import API from "../../services";
 
 class BlogPost extends Component {
   state = {
     data: [],
+    comment: [],
     formBlog: {
       userId: 1,
       id: 1,
@@ -16,22 +18,42 @@ class BlogPost extends Component {
   }
 
   getDataAPI = () => {
-    axios.get('http://localhost:3004/posts?_sort=id&_order=desc')
-      .then(result => {
-        console.log(result)
-        this.setState({
-          data: result.data
-        })
-      })
+
+    //global sevice
+    API.getNewsBlog().then(res => {
+      this.setState({
+        data: res
+      });
+    })
+
+    // API.getComment().then(res => {
+    //   this.setState({
+    //     comment: res
+    //   })
+    // })
+
+    // axios.get('http://localhost:3004/posts?_sort=id&_order=desc')
+    //   .then(result => {
+    //     console.log(result)
+    //     this.setState({
+    //       data: result.data
+    //     })
+    //   })
   }
 
   postDataAPI = () => {
-    // dua params
-    axios.post('http://localhost:3004/posts', this.state.formBlog)
-      .then(res => {
-        console.log(res);
-        this.getDataAPI();
-      })
+
+    // global service
+    API.postNewsBlog(this.state.formBlog).then(res => {
+      this.getDataAPI();
+    })
+
+    // // dua params
+    // axios.post('http://localhost:3004/posts', this.state.formBlog)
+    //   .then(res => {
+    //     console.log(res);
+    //     this.getDataAPI();
+    //   })
   }
 
   deleteDataAPI = (id) => {
@@ -104,6 +126,7 @@ class BlogPost extends Component {
           title: '',
           body: ''
         },
+        isUpdate: false
       })
     }
   }
@@ -124,6 +147,16 @@ class BlogPost extends Component {
           <textarea name="body" id="body" rows="10" onChange={this.changeForm} value={this.state.formBlog.body}></textarea><br />
           <button type="submit" onClick={this.submitForm}>save</button>
         </div>
+        {/* {
+          this.state.comment.map(com => {
+            return (
+              <>
+                <h1>{com.email}</h1>
+                <h3>{com.name}</h3>
+              </>
+            )
+          })
+        } */}
         <div className="grid">
           {
             this.state.data.map(post => {
