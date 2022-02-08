@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import './LifeCycleComp.css'
 
 class LifeCycleComp extends React.Component {
@@ -67,9 +68,16 @@ class LifeCycleComp extends React.Component {
       <>
         <h1 className="header">LifeCycle</h1><hr />
         <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
+        <h2>total count global : {this.props.count}</h2>
       </>
     )
   }
 }
 
-export default LifeCycleComp;
+const mapStateToProps = state => {
+  return {
+    count: state.setCount
+  }
+}
+
+export default connect(mapStateToProps)(LifeCycleComp);

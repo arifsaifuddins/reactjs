@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 import Counter from "../pages/counter/Counter";
 import LifeCycleComp from "../pages/lifecylce/LifeCycleComp";
 import BlogPost from "../pages/blog/BlogPost";
+import Detail from "../pages/blog/detail/Detail";
 import Cards from "../pages/card/Cards";
 
 import "./Home.css";
@@ -58,12 +59,11 @@ class Home extends Component {
               <Link className="link" to="/cards">Cards</Link>
             </div>
 
-            <Routes>
-              <Route exact path="/" element={<BlogPost />} />
-              <Route path="/counter" element={<Counter />} />
-              <Route path="/lifecycle" element={<LifeCycleComp />} />
-              <Route path="/cards" element={<Cards />} />
-            </Routes>
+            <Route exact path="/" component={BlogPost} />
+            <Route path="/detail/:postId" component={Detail} />
+            <Route path="/counter" component={Counter} />
+            <Route path="/lifecycle" component={LifeCycleComp} />
+            <Route path="/cards" component={Cards} />
           </Fragment>
         </BrowserRouter>
       </div>

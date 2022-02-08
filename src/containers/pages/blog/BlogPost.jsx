@@ -106,7 +106,10 @@ class BlogPost extends Component {
         },
       })
     }
+  }
 
+  detailData = (id) => {
+    this.props.history.push(`/detail/${id}`)
   }
 
   render() {
@@ -124,7 +127,7 @@ class BlogPost extends Component {
         <div className="grid">
           {
             this.state.data.map(post => {
-              return <Post data={post} key={post.id} remove={this.deleteDataAPI} update={this.updateForm} />
+              return <Post data={post} key={post.id} remove={this.deleteDataAPI} update={this.updateForm} detail={this.detailData} />
             })
           }
         </div>
