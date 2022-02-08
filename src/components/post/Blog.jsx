@@ -1,7 +1,7 @@
 import React from "react";
-import './Post.css'
+import './Blog.css'
 
-const Post = (props) => {
+const Blog = (props) => {
   return (
     <div className="post">
       {/* <img src="https://placeimg.com/300/300/tech" alt="img" className="gambar" /> */}
@@ -15,4 +15,4 @@ const Post = (props) => {
   )
 }
 
-export default Post;
+export default Blog;

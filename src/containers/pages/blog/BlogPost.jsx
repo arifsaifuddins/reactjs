@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Post from "../../../components/post/Blog";
+import Blog from "../../../components/post/Blog";
 // import axios from 'axios';
 import './BlogPost.css';
 import API from "../../services";
@@ -172,7 +172,7 @@ class BlogPost extends Component {
         <div className="grid">
           {
             this.state.data.map(post => {
-              return <Post data={post} key={post.id} remove={this.deleteDataAPI} update={this.updateForm} detail={this.detailData} />
+              return <Blog data={post} key={post.id} remove={this.deleteDataAPI} update={this.updateForm} detail={this.detailData} />
             })
           }
         </div>
