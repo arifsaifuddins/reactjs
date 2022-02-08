@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import Post from "../../../components/post/Post";
-import axios from 'axios';
+import Post from "../../../components/post/Blog";
+// import axios from 'axios';
 import './BlogPost.css';
 import API from "../../services";
 
@@ -57,18 +57,30 @@ class BlogPost extends Component {
   }
 
   deleteDataAPI = (id) => {
-    axios.delete(`http://localhost:3004/posts/${id}`)
-      .then(res => {
-        this.getDataAPI();
-        console.log(res);
-      })
+
+    // global service
+    API.deleteDataBlog(id).then(res => {
+      this.getDataAPI();
+    })
+
+    // axios.delete(`http://localhost:3004/posts/${id}`)
+    //   .then(res => {
+    //     this.getDataAPI();
+    //     console.log(res);
+    //   })
   }
 
   updateDataAPI = () => {
-    axios.put(`http://localhost:3004/posts/${this.state.formBlog.id}`, this.state.formBlog).then(res => {
-      console.log(res)
-      this.getDataAPI()
+
+    // global sevice
+    API.putDataBlog(this.state.formBlog, this.state.formBlog.id).then(res => {
+      this.getDataAPI();
     })
+
+    // axios.put(`http://localhost:3004/posts/${this.state.formBlog.id}`, this.state.formBlog).then(res => {
+    //   console.log(res)
+    //   this.getDataAPI()
+    // })
   }
 
   componentDidMount() {
