@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './button/Button';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { RootContext } from '../../home/Home';
 import './Counter.css';
 
 class Counter extends Component {
@@ -16,23 +17,41 @@ class Counter extends Component {
 
   render() {
     return (
-      <>
-        <h1 className="header">Couter</h1><hr />
-        <div className="counter">
-          <h1 className="numb">{this.props.count}</h1>
-          {/* dapat value dari button.js */}
-          {/* <Button className="button" changeValue={(value) => this.handleControl(value)} /> */}
-          <Button className="button" />
-        </div>
-      </>
+      <RootContext.Consumer>
+        {
+          value => {
+            return (
+              <>
+                <h1 className="header">Couter</h1><hr />
+                <div className="counter">
+                  {/* redux */}
+                  {/* <h1 className="numb">{this.props.count}</h1> */}
+
+                  {/* context */}
+                  <h1 className="numb">{value.state.setCount}</h1>
+
+                  {/* dapat value dari button.js */}
+                  {/* <Button className="button" changeValue={(value) => this.handleControl(value)} /> */}
+                  <Button className="button" />
+                </div>
+              </>
+            )
+          }
+        }
+      </RootContext.Consumer>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    count: state.setCount
-  }
-}
+//redux 
 
-export default connect(mapStateToProps)(Counter);
+// const mapStateToProps = state => {
+//   return {
+//     count: state.setCount
+//   }
+// }
+
+// export default connect(mapStateToProps)(Counter);
+
+// context
+export default Counter;

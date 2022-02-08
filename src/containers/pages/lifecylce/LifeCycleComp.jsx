@@ -1,5 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
+
+// import { connect } from "react-redux";
+import { RootContext } from "../../home/Home";
 import './LifeCycleComp.css'
 
 class LifeCycleComp extends React.Component {
@@ -65,19 +67,31 @@ class LifeCycleComp extends React.Component {
   render() {
     console.log('render')
     return (
-      <>
-        <h1 className="header">LifeCycle</h1><hr />
-        <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
-        <h2>total count global : {this.props.count}</h2>
-      </>
+      <RootContext.Consumer>
+        {value => {
+          return (
+            <>
+              <h1 className="header">LifeCycle</h1><hr />
+              <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
+
+              {/* redux */}
+              {/* <h2>total count global : {this.props.count}</h2>  */}
+
+              {/* context */}
+              <h2>total count global : {value.state.setCount}</h2>
+            </>
+          )
+        }}
+      </RootContext.Consumer>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    count: state.setCount
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     count: state.setCount
+//   }
+// }
 
-export default connect(mapStateToProps)(LifeCycleComp);
+// export default connect(mapStateToProps)(LifeCycleComp);
+export default LifeCycleComp;

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
+// import { connect } from 'react-redux';
 import actionType from '../../../redux/globalActionType';
+
+//context
+import { RootContext } from '../../../home/Home';
 
 class Button extends Component {
   // state = {
@@ -32,30 +36,50 @@ class Button extends Component {
   // }
 
   render() {
-    console.log(this.props) // redux
+    // console.log(this.props) // redux
+    // return (
+    //   <div className="button">
+    //     <button className='btn' onClick={this.props.handleMin}>-</button>
+    //     <div className="count">{this.props.count}</div>
+    //     <button className='btn' onClick={this.props.handlePlus}>+</button>
+    //   </div>
+    // )
+
+    // context
     return (
-      <div className="button">
-        <button className='btn' onClick={this.props.handleMin}>-</button>
-        <div className="count">{this.props.count}</div>
-        <button className='btn' onClick={this.props.handlePlus}>+</button>
-      </div>
+      <RootContext.Consumer>
+        {
+          value => {
+            return (
+              <div className="button">
+                <button className='btn' onClick={() => value.count({ type: actionType.minus })}>-</button>
+                <div className="count">{value.state.setCount}</div>
+                <button className='btn' onClick={() => value.count({ type: actionType.plus })}>+</button>
+              </div>
+            )
+          }
+        }
+      </RootContext.Consumer>
     )
   }
 }
 
-// redux(state management)
+// // redux(state management)
 
-const mapStateToProps = (state) => {
-  return {
-    count: state.setCount
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     count: state.setCount
+//   }
+// }
 
-const setDispatchToProps = (dispatch) => {
-  return {
-    handlePlus: () => dispatch({ type: actionType.plus }),
-    handleMin: () => dispatch({ type: actionType.minus }),
-  }
-}
+// const setDispatchToProps = (dispatch) => {
+//   return {
+//     handlePlus: () => dispatch({ type: actionType.plus }),
+//     handleMin: () => dispatch({ type: actionType.minus }),
+//   }
+// }
 
-export default connect(mapStateToProps, setDispatchToProps)(Button);
+// export default connect(mapStateToProps, setDispatchToProps)(Button);
+
+// context
+export default Button;
