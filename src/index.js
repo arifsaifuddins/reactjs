@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 // redux
 // import { createStore } from 'redux';
 // import { Provider } from 'react-redux';
-// import rootReducer from './containers/redux/reducer/globalReducer';
+// import rootReducer from './containers/states/reducer/globalReducer';
 
 // // store
 // const storeRedux = createStore(rootReducer)

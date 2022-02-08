@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 // import { connect } from 'react-redux';
-import actionType from '../../../redux/globalActionType';
+import actionType from '../../../states/globalActionType';
 
 //context
-import { RootContext } from '../../../home/Home';
+import { globalConsumer } from '../../../states/context/context';
 
 class Button extends Component {
   // state = {
@@ -47,19 +47,11 @@ class Button extends Component {
 
     // context
     return (
-      <RootContext.Consumer>
-        {
-          value => {
-            return (
-              <div className="button">
-                <button className='btn' onClick={() => value.count({ type: actionType.minus })}>-</button>
-                <div className="count">{value.state.setCount}</div>
-                <button className='btn' onClick={() => value.count({ type: actionType.plus })}>+</button>
-              </div>
-            )
-          }
-        }
-      </RootContext.Consumer>
+      <div className="button">
+        <button className='btn' onClick={() => this.props.count({ type: actionType.minus })}>-</button>
+        <div className="count">{this.props.state.setCount}</div>
+        <button className='btn' onClick={() => this.props.count({ type: actionType.plus })}>+</button>
+      </div>
     )
   }
 }
@@ -82,4 +74,6 @@ class Button extends Component {
 // export default connect(mapStateToProps, setDispatchToProps)(Button);
 
 // context
-export default Button;
+export default globalConsumer(Button);
+
+// export default Button;

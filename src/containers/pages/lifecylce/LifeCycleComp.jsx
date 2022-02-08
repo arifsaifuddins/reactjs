@@ -1,7 +1,7 @@
 import React from "react";
+import { globalConsumer } from "../../states/context/context";
 
 // import { connect } from "react-redux";
-import { RootContext } from "../../home/Home";
 import './LifeCycleComp.css'
 
 class LifeCycleComp extends React.Component {
@@ -67,25 +67,22 @@ class LifeCycleComp extends React.Component {
   render() {
     console.log('render')
     return (
-      <RootContext.Consumer>
-        {value => {
-          return (
-            <>
-              <h1 className="header">LifeCycle</h1><hr />
-              <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
+      <>
+        <h1 className="header">LifeCycle</h1><hr />
+        <button onClick={this.updateCount} className="btn">Life Cycle {this.state.count}</button>
+        {/* <h2>total count global : {this.props.setCount}</h2> */}
 
-              {/* redux */}
-              {/* <h2>total count global : {this.props.count}</h2>  */}
+        {/* redux */}
+        {/* <h2>total count global : {this.props.count}</h2>  */}
 
-              {/* context */}
-              <h2>total count global : {value.state.setCount}</h2>
-            </>
-          )
-        }}
-      </RootContext.Consumer>
+        {/* context */}
+        <h2>total count global : {this.props.state.setCount}</h2>
+      </>
     )
   }
 }
+
+// redux
 
 // const mapStateToProps = state => {
 //   return {
@@ -94,4 +91,8 @@ class LifeCycleComp extends React.Component {
 // }
 
 // export default connect(mapStateToProps)(LifeCycleComp);
-export default LifeCycleComp;
+
+// context
+export default globalConsumer(LifeCycleComp);
+
+// export default LifeCycleComp;
