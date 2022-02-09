@@ -1,8 +1,8 @@
 // import React, { Component } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Hooks.css';
 
-// class component
+// // class component
 
 // class Hooks extends Component {
 //   state = {
@@ -13,6 +13,18 @@ import './Hooks.css';
 //     this.setState({
 //       count: this.state.count + 1
 //     })
+//   }
+
+//   componentDidMount = () => {
+//     return document.title = `Total Count : ${this.state.count}`;
+//   }
+
+//   componentDidUpdate = () => {
+//     return document.title = `Total Count : ${this.state.count}`;
+//   }
+
+//   componentWillUnmount = () => {
+//     return document.title = 'React Basic';
 //   }
 
 //   render() {
@@ -28,7 +40,14 @@ import './Hooks.css';
 // functional component
 
 const Hooks = () => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Total Count : ${count}`;
+    return () => {
+      document.title = `React Basic`;
+    }
+  })
 
   return (
     <div className="counterHooks">
