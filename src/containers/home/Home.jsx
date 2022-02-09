@@ -9,6 +9,7 @@ import Cards from "../pages/card/Cards";
 
 import "./Home.css";
 import globalProvider from "../states/context/context";
+import Hooks from "../pages/hooks/Hooks";
 
 class Home extends Component {
   // state = {
@@ -58,6 +59,7 @@ class Home extends Component {
               <Link className="link" to="/counter">Counter</Link>
               <Link className="link" to="/lifecycle">LifeCycle</Link>
               <Link className="link" to="/cards">Cards</Link>
+              <Link className="link" to="/hooks">Hooks</Link>
             </div>
 
             <Route exact path="/" component={BlogPost} />
@@ -65,6 +67,7 @@ class Home extends Component {
             <Route path="/counter" component={Counter} />
             <Route path="/lifecycle" component={LifeCycleComp} />
             <Route path="/cards" component={Cards} />
+            <Route path="/hooks" component={Hooks} />
           </Fragment>
         </BrowserRouter>
       </div>
